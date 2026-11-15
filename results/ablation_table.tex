@@ -1,0 +1,8 @@
+A0 Starter baseline & 0.427 $\pm$ 0.005 & -- \\
+A1 + logit-adjusted loss & 0.519 $\pm$ 0.044 & [+0.048, +0.140] \\
+A1' class-weighted CE instead (alternative) & 0.525 $\pm$ 0.035 & [+0.053, +0.149] \\
+A2 + 40 epochs, warm-up + cosine LR & 0.551 $\pm$ 0.016 & [+0.073, +0.180] \\
+A3 + data augmentation & 0.573 $\pm$ 0.010 & [+0.090, +0.206] \\
+A4 + ResNet-style CNN & 0.591 $\pm$ 0.021 & [+0.103, +0.227] \\
+A5 + test-time augmentation (8 views) & 0.577 $\pm$ 0.014 & [+0.090, +0.211] \\
+Final model.pt (5-net ensemble + 8 views) & 0.612 & [+0.121, +0.252] \\
