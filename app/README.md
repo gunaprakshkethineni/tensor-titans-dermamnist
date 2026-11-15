@@ -52,4 +52,35 @@ Then open http://127.0.0.1:7860
    This is the trade-off on our poster: we find many more melanomas, but we also raise more false alarms.
 5. Close with the disclaimer: a student project, not a medical device.
 
+## Where the example images come from
+
+All example images are from the **validation** split. None is a training or test image, so the demo does not
+show the model photos it learned from or photos used for the final test.
+
+**Very blurred (`examples/3_very_blurred/`):** taken directly from the DermaMNIST validation split
+(28 x 28, MedMNIST v2). The number in each file name is the image's index in the validation split
+(e.g. `val117` = validation image 117). They are enlarged 8 times for display without changing any pixel.
+
+**Sharp (`examples/1_sharp/`):** original 600 x 450 dermatoscopy photos from HAM10000, downloaded from the
+`eval` folder of the public repository
+[without-paper/HAM_10000-Classification-with-CNNs-in-PyTorch](https://github.com/without-paper/HAM_10000-Classification-with-CNNs-in-PyTorch/tree/main/eval).
+The file name keeps the original HAM10000 / ISIC image ID.
+
+| file | ISIC ID | class | DermaMNIST split, index |
+|---|---|---|---|
+| `1_melanoma_ISIC_0024679.jpg` | ISIC_0024679 | melanoma | val, 865 |
+| `2_basal_cell_carcinoma_ISIC_0024443.jpg` | ISIC_0024443 | basal cell carcinoma | val, 656 |
+| `3_melanocytic_nevi_ISIC_0024356.jpg` | ISIC_0024356 | melanocytic nevi | val, 380 |
+| `4_actinic_keratoses_ISIC_0025427.jpg` | ISIC_0025427 | actinic keratoses | val, 473 |
+| `5_benign_keratosis_ISIC_0034024.jpg` | ISIC_0034024 | benign keratosis | val, 864 |
+
+How we checked the split: DermaMNIST was made by cutting each HAM10000 photo to a centred square and shrinking
+it to 28 x 28. We did the same with every photo of that folder (90 photos) and found the most similar of all
+10 015 DermaMNIST images. The label of the best match agreed with the folder's label for all 90 photos. For the
+5 photos we use, the best match was about 3 times closer than the second best, so these matches are clear.
+Only the 5 photos that matched a validation image are used.
+
+**Slightly blurred (`examples/2_slightly_blurred/`):** the first three sharp photos, cut to a centred square and
+shrunk to 64 x 64 by us (shown enlarged).
+
 Photos: HAM10000 (Tschandl, Rosendahl & Kittler, Sci. Data 2018), CC BY-NC 4.0.
