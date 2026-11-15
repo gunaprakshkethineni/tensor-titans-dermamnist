@@ -1,0 +1,9 @@
+data/
+runs/
+__pycache__/
+*.pyc
+report/*.aux
+report/*.log
+report/*.bbl
+report/*.blg
+report/*.out
